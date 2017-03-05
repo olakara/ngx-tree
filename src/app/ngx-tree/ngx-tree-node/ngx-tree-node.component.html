@@ -1,0 +1,16 @@
+<ul class="ngx-tree-node">
+  <li>
+    <template [ngIf]="isLeaf">
+      <i class="fa fa-minus" style="color: white"></i>
+    </template>
+    <template [ngIf]="!isLeaf">
+      <i class="fa fa-minus" (click)="closeTreeNode()" *ngIf="isOpen"></i>
+      <i class="fa fa-plus" (click)="openTreeNode()" *ngIf="!isOpen"></i>
+    </template>
+    <a (click)="selectTreeNode()">{{data.title}}</a>
+</li>
+<template [ngIf]="isOpen">
+  <ngx-tree-node [data]="node" *ngFor="let node of data.children">
+  </ngx-tree-node>
+</template>
+</ul>
