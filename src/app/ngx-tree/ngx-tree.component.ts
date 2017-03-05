@@ -15,17 +15,16 @@ export class NgxTreeComponent implements OnInit {
   @Input('options')
   options: any;
 
-  @Output()
-  selection : EventEmitter<any> = new EventEmitter();
+  @Output() selection = new EventEmitter();
 
-  constructor(private service: NgxTreeService) {     
-      this.selection = new EventEmitter<any>();
+  constructor(private service: NgxTreeService) {           
       this.service.getSelection().subscribe(this.processSelection);
+      this.selection.emit('hello');
    }
 
    processSelection(data) {
       console.log(this.selection,data); 
-      this.selection.emit(data);
+      this.selection.next(data);
    }
 
   ngOnInit() {
