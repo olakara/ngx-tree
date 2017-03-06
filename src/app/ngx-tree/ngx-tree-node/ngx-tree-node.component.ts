@@ -36,7 +36,6 @@ export class NgxTreeNodeComponent implements OnInit {
   }
 
   selectTreeNode() {
-    this.service.setSelection(this.data);
-    console.log('User selected', this.data.title);
+    this.service.setSelection(this.data);    
   }
 }
